@@ -1,6 +1,15 @@
 server:
   port: 8071
 
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
 spring:
   application:
     name: gateway_service
@@ -11,18 +20,59 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: gatewayfirst
-          uri: lb://TESTPROJECT
-          predicates:
-            - Path=/test-project-test/**
+        - id: gatewayfirst        # route ID, unique
+          uri: lb://TESTPROJECT   # sub service
+          predicates:             # assertion
+            - Path=/test-project-test/**  #
+            - Method=GET          # match the GET method
           filters:
             - StripPrefix=1
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+### predicate Factories and Gateway Filter Factories:
+  - id: after_route
+    uri: https://example.org
+    predicates:
+      - Cookie=mycookie,mycookievalue
+    =>
+      - name: Cookie
+        args:
+          name: mycookie
+          value: mycookievalue
+
+###  Route Predicate Factories:
+  - id: after_route
+    uri: https://example.org
+    predicates:
+      # match any request made after Jan 20, 2017 17:42 (Denver)
+      - After=2017-01-20T17:42:47.789-07:00[America/Denver]
+      # ...... before
+      - Before=2017-01-20T17:42:47.789-07:00[America/Denver]
+      # ...... between
+      - Between=2017-01-20T17:42:47.789-07:00[America/Denver], 2017-01-21T17:42:47.789-07:00[America/Denver]
+
+      # matches request that have a cookie named chocolate whose value matches the ch.p regular expression
+      - Cookie=chocolate, ch.p
+      # matches request if the header named X-Request-Id whose value matches the \d+ regular expression
+      - Header=X-Request-Id, \d+
+      # Ant-style pattern with . as separator for the host name
+      - Host=**.somehost.org,**.anotherhost.org
+      # matches the Method
+      - Method=GET,POST
+      # Path Route Predicate Factory. PathMatcher patterns and an optional flag called matchTrailingSlash(default true
+      - Path=/red/{segment},/blue/{segment}   # match /red/1, /red/1/, /red/whatever.  if the matchTrailingSlash is false, then the /red/1/ won't be matched
+      # Query Route Predicate. param and an optional regular expression.
+      - Query=green # match any request which contains a green query parameter
+      - Query=color, gree. # matches if the request contained a color query parameter whose value matched the gree. regexp.
+      # RemoteAddr : takes a list(min size 1) of sources, which are CIDR-notation(IPv3 or IPv6) strings.
+      - RemoteAddr=192.168.1.1/24 # 24 is a subnet mast
+
+      # Weight route predicate factory: traffic route
+      # This route would forward ~80% of traffic to weighthigh.org and ~20% of traffic to weighlow.org
+      - id: weight_high
+        uri: https://weighthigh.org
+        predicates:
+          - Weight=group1, 8
+      - id: weight_low
+        uri: https://weightlow.org
+        predicates:
+          - Weight=group2, 2
