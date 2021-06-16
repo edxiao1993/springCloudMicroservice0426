@@ -20,6 +20,11 @@ public class DefaultController {
         return "hello world~ DAMN IT!";
     }
 
+    @GetMapping("/name/age")
+    public String secondMethod(){
+        return "my name is Kevin, and the age would be 28!";
+    }
+
     @PostMapping(value = "postDt")
     public String postData(HttpServletRequest request){
         Enumeration<String> es = request.getParameterNames();

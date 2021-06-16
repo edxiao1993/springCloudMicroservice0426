@@ -1,6 +1,5 @@
 package org.kevin.service;
 
-import feign.Param;
 import org.kevin.bean.ParamsBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
