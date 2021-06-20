@@ -21,3 +21,24 @@ GatewayService项目地址：
   application.name: gateway_service
 
 启动项目之后，可以
+
+
+### date before 0620:
+add OpenFeign project.
+location:
+/Users/xiaoxiang/IdeaProjects/springCloudMicroservice0426/springcloudOpenFeign
+  port: 7891
+
+
+add frontEnd project
+location:
+/Users/xiaoxiang/IdeaProjects/springCloudMicroservice0426/frontEnd
+  port: 8080
+
+### date 0620:
+add OAuth2 Authorization Server:
+actually, only handle the SpringSecurity, noting to do with OAuth2
+: because the springboot 2.4 remove the support for OAuth2 Authorization server......
+
+OK, let's assume the SSO is works normally. focus on the dataService and the display of frontEnd.
+No matter what, create a basic SpringCloudMicroService project, then the rest would be completed as you wish~
