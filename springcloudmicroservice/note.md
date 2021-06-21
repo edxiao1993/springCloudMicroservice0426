@@ -42,3 +42,14 @@ actually, only handle the SpringSecurity, noting to do with OAuth2
 
 OK, let's assume the SSO is works normally. focus on the dataService and the display of frontEnd.
 No matter what, create a basic SpringCloudMicroService project, then the rest would be completed as you wish~
+
+
+### data 0621:
+提说今天是夏至～～～热倒是很热，只是没啥心情去熬夜看日出嘞。。。
+添加了前端blog项目：springcloudBlog, 只是最基本的显示，保证能跑通 GateWay, DataService, Eureka。
+完整的博客，明天再搞吧。
+端口：8080
+
+添加了数据操作的项目：springcloudDatabase， 应该叫 springcloudData 才对的，又不仅仅是操作 MySQL 的数据库。算了，先这么叫着
+今晚只是做了查询的操作，余下的应该不怎么难。就是 OpenFeign 传递多个参数的问题，要好好写个笔记才行。
+端口：8376 （MySQL的端口是 3306，这里为什么叫 8376？）
