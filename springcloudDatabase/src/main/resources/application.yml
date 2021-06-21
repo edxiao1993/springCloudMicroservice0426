@@ -1,0 +1,30 @@
+server:
+  port: 8379
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: org.kevin.model
+
+spring:
+  application:
+    name: dataservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.119.128.80:3306/myblog?serverTimezone=GMT%2B8
+    username: kevin1993
+    password: Pwd0304
+    hikari:
+      connection-timeout: 9000
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 120000
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true

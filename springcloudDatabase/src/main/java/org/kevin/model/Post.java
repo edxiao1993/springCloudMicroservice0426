@@ -1,0 +1,55 @@
+package org.kevin.model;
+
+import java.time.LocalDateTime;
+
+public class Post {
+    private String id;
+
+    private String cuserId;
+
+    private String title;
+
+    private String content;
+
+    private LocalDateTime createTime;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getCuserId() {
+        return cuserId;
+    }
+
+    public void setCuserId(String cuserId) {
+        this.cuserId = cuserId == null ? null : cuserId.trim();
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+}
