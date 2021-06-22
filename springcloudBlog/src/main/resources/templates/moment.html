@@ -51,10 +51,10 @@
       <nav class="blog-pagination">
         <a class="btn btn-outline-secondary disabled" th:unless="${pageModel.hasPrevious}" href="javascript:void(0);">PreviousPage</a>
         <a class="btn btn-outline-primary" th:if="${pageModel.hasPrevious}" href="prePage"
-           th:href="@{'/moment?previousTime=' + ${pageModel.beginTime}}">PreviousPage</a>
+           th:href="@{'/blog/moment?previousTime=' + ${pageModel.beginTime}}">PreviousPage</a>
         <a class="btn btn-outline-secondary disabled" th:unless="${pageModel.hasNext}" href="javascript:void(0);">NextPage</a>
         <a class="btn btn-outline-primary" th:if="${pageModel.hasNext}" href="nexPage"
-           th:href="@{'/moment?nextTime=' + ${pageModel.endTime}}">NextPage</a>
+           th:href="@{'/blog/moment?nextTime=' + ${pageModel.endTime}}">NextPage</a>
       </nav>
 
       <div class="row">

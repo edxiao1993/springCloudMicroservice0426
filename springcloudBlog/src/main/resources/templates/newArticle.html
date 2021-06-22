@@ -110,7 +110,7 @@
         exist without saving?
       </div>
       <div class="modal-footer">
-        <a class="btn btn-outline-info" href="/index">Exist</a>
+        <a class="btn btn-outline-info" href="/blog/index">Exist</a>
       </div>
     </div>
   </div>
@@ -144,13 +144,13 @@
       var formData = $("#newArticleForm").serialize();
       console.log(formData)
       $.ajax({
-        url: "/saveArticle",
+        url: "/blog/saveArticle",
         type: "post",
         data: formData,
         success: function (data) {
         layer.closeAll();
           if (data == 1) {
-            location.href = "/index";
+            location.href = "/blog/index";
           }
         },
         error: function () {

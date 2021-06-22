@@ -27,7 +27,7 @@
     <div class="col-md-10 px-0">
       <h1 class="display-12 font-italic">一个人只拥有此生此世是不够的</h1>
       <p class="lead mb-0 font-weight-bold">
-        <a href="/newArticle" class="text-white font-weight-bold">NewArticle</a>
+        <a href="/blog/newArticle" class="text-white font-weight-bold">NewArticle</a>
       </p>
     </div>
   </div>
@@ -40,13 +40,13 @@
         <div class="card-body d-flex flex-column align-items-start">
           <strong class="d-inline-block mb-2" th:text="${article.articleType}">ArticleType</strong>
           <h3 class="mb-0">
-            <a class="text-dark" th:href="@{/article(id=${article.id})}" th:text="${article.title}">Featured post</a>
+            <a class="text-dark" th:href="@{/blog/article(id=${article.id})}" th:text="${article.title}">Featured post</a>
           </h3>
           <div class="mb-1 text-muted" th:text="${article.createTime}">Nov 12</div>
           <p class="card-text mb-auto" th:utext="${article.foreword}">
             the article's foreword
           </p>
-          <a th:href="@{/article(id=${article.id})}">Continue reading</a>
+          <a th:href="@{/blog/article(id=${article.id})}">Continue reading</a>
         </div>
       </div>
     </div>

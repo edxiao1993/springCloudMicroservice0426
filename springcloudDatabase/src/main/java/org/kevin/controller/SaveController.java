@@ -29,7 +29,7 @@ public class SaveController {
     @RequestMapping("saveSecretMoment")
     public ResultData<Integer> saveSecretMoment(@RequestParam(value = "content", required = false) String content){
         ResultData<Integer> resultData = new ResultData<>();
-        if(!StringUtils.isEmpty(content)){
+        if(!StringUtils.hasLength(content)){
             resultData.setData(secretMomentService.insertNewRecord(content));
         }
         return resultData;

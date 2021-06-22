@@ -23,7 +23,7 @@
     <div class="col-4 pt-1">
     </div>
     <div class="col-4 text-center">
-      <a class="blog-header-logo text-dark" href="/index">@K</a>
+      <a class="blog-header-logo text-dark" href="/blog/index">@K</a>
     </div>
     <div class="col-4 d-flex justify-content-end align-items-center">
       <a class="text-muted" href="#">
@@ -39,9 +39,9 @@
 
 <div class="nav-scroller py-1 mb-2" th:fragment="index">
   <nav class="nav d-flex justify-content-between">
-    <a class="p-2 text-info" href="/moment">Moment</a>
-    <a class="p-2 text-danger" href="http://localhost:5555/frontend/secretMoment">SecretMoment</a>
-    <a class="p-2 text-warning" href="/spending">Spending</a>
+    <a class="p-2 text-info" href="/blog/moment">Moment</a>
+    <a class="p-2 text-danger" href="/blog/secretMoment">SecretMoment</a>
+    <a class="p-2 text-warning" href="/blog//spending">Spending</a>
     <a class="p-2 text-muted" th:data="${type.value}" th:each="type:${articleTypes}" th:text="${type.type}"
        onclick="selectArticleType(this)" href="#">article type</a>
   </nav>
@@ -88,7 +88,7 @@
   <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
       href="https://twitter.com/mdo">@mdo</a>.</p>
   <p>
-    <a href="/index">Back to Home</a>
+    <a href="/blog/index">Back to Home</a>
   </p>
 </footer>
 

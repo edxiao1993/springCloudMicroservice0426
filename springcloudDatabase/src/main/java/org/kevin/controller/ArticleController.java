@@ -2,12 +2,11 @@ package org.kevin.controller;
 
 import org.kevin.model.Article;
 import org.kevin.model.ArticleType;
+import org.kevin.model.dto.ResultData;
 import org.kevin.service.ArticleService;
 import org.kevin.service.ArticleTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +36,13 @@ public class ArticleController {
         return articleService.selectByTypes(articleType, pageNum, pageSize);
     }
 
+    @RequestMapping("/countArticleByArticleType")
+    public ResultData<Long> countArticleByArticleType(@RequestParam("articleType") Integer articleType) {
+        ResultData<Long> resultData = new ResultData<>();
+        resultData.setData(articleService.count(articleType));
+        return resultData;
+    }
+
     @RequestMapping("/selectArticleById")
     public Article selectArticleById(@RequestParam("id") String id) {
         return articleService.selectById(id);
@@ -47,4 +53,8 @@ public class ArticleController {
         return articleTypeService.findList();
     }
 
+    @PostMapping("/save")
+    public Integer save(Article article){
+        return articleService.insert(article);
+    }
 }

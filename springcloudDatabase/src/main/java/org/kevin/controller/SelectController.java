@@ -51,21 +51,7 @@ public class SelectController {
         return articleTypeService.findList();
     }
 
-    @RequestMapping("/selectSecretMoment")
-    public List<SecretMoment> selectSecretMoment(
-            @RequestParam(value = "pageNum", required = false) Integer pageNum,
-            @RequestParam(value = "pageSize", required = false) Integer pageSize,
-            @RequestParam(value = "moment", required = false) String moment) {
-        return secretMomentService.findList(moment, pageNum, pageSize);
-    }
 
-    @RequestMapping("/countSecretMoment")
-    public ResultData<Long> countSecretMoment(
-            @RequestParam(value = "moment", required = false) String moment) {
-        ResultData<Long> resultData = new ResultData<>();
-        resultData.setData(secretMomentService.count(moment));
-        return resultData;
-    }
 
 
 }

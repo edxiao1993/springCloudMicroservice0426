@@ -31,13 +31,13 @@
         <div class="card-body d-flex flex-column align-items-start">
           <strong class="d-inline-block mb-2" th:text="${article.articleType}">ArticleType</strong>
           <h3 class="mb-0">
-            <a class="text-dark" th:href="@{/article(id=${article.id})}" th:text="${article.title}">Featured post</a>
+            <a class="text-dark" th:href="@{/blog/article(id=${article.id})}" th:text="${article.title}">Featured post</a>
           </h3>
           <div class="mb-1 text-muted" th:text="${article.createTime}">Nov 12</div>
           <p class="card-text mb-auto" th:utext="${article.foreword}">
             the article's foreword
           </p>
-          <a th:href="@{/article(id=${article.id})}">Continue reading</a>
+          <a th:href="@{/blog/article(id=${article.id})}">Continue reading</a>
         </div>
       </div>
     </div>
@@ -46,10 +46,10 @@
   <nav class="blog-pagination">
     <!--<a class="btn btn-outline-secondary disabled" th:unless="${pageInfo.isHasPreviousPage()}" href="javascript:void(0);">PreviousPage</a>-->
     <a class="btn btn-outline-primary" th:if="${pageModel.hasPrevious}" href="prePage"
-      th:href="@{'/articles?articleType=' + ${articleType} + '&pageNum=' + ${pageModel.previousPage}}">PreviousPage</a>
+      th:href="@{'/blog/articles?articleType=' + ${articleType} + '&pageNum=' + ${pageModel.previousPage}}">PreviousPage</a>
     <!--<a class="btn btn-outline-secondary disabled" th:unless="${pageInfo.isHasNextPage()}" href="javascript:void(0);">NextPage</a>-->
     <a class="btn btn-outline-primary" th:if="${pageModel.hasNext}" href="nexPage"
-       th:href="@{'/articles?articleType=' + ${articleType} + '&pageNum=' + ${pageModel.nextPage}}">NextPage</a>
+       th:href="@{'/blog/articles?articleType=' + ${articleType} + '&pageNum=' + ${pageModel.nextPage}}">NextPage</a>
   </nav>
 </div>
 

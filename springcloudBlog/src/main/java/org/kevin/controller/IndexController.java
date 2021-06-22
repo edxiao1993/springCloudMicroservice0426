@@ -32,17 +32,4 @@ public class IndexController {
         modelMap.addAttribute("articles", articleList);
         return "index";
     }
-
-    @GetMapping("/secretMoment")
-    public String secretMoment(ModelMap modelMap,
-                               @RequestParam(value = "pageNum", required = false) Integer pageNum,
-                               @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                               @RequestParam(value = "moment", required = false) String moment,
-                               HttpServletRequest request, HttpServletResponse response) {
-//        PageModel pageModel = new PageModel(pageNum, pageSize, count);
-//        modelMap.addAttribute("pageModel", pageModel);
-//        modelMap.addAttribute("secretMoments", secretMomentList);
-        return "secretMoment";
-    }
-
 }

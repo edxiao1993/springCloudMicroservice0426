@@ -47,5 +47,5 @@ $(function () {
 
 function selectArticleType(obj) {
   var x = $(obj);
-  x.attr("href", "/articles?articleType=" + x.attr("data"));
+  x.attr("href", "/blog/articles?articleType=" + x.attr("data"));
 }

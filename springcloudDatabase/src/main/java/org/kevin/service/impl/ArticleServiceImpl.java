@@ -67,6 +67,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int insert(Article article) {
+        article.setCreateTime(LocalDateTime.now());
         article.setUpdateTime(LocalDateTime.now());
         article.setDeleteFlag(Boolean.FALSE);
         article.setForeword(CommonUtils.replaceLineCharacter(article.getForeword()));
