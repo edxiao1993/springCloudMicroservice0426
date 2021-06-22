@@ -10,9 +10,9 @@ spring:
     name: dataservice
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.119.128.80:3306/myblog?serverTimezone=GMT%2B8
-    username: kevin1993
-    password: Pwd0304
+    url: jdbc:mysql://localhost:3306/myblog?serverTimezone=GMT%2B8
+    username: root
+    password: root
     hikari:
       connection-timeout: 9000
       minimum-idle: 5
