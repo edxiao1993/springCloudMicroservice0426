@@ -53,3 +53,11 @@ No matter what, create a basic SpringCloudMicroService project, then the rest wo
 添加了数据操作的项目：springcloudDatabase， 应该叫 springcloudData 才对的，又不仅仅是操作 MySQL 的数据库。算了，先这么叫着
 今晚只是做了查询的操作，余下的应该不怎么难。就是 OpenFeign 传递多个参数的问题，要好好写个笔记才行。
 端口：8376 （MySQL的端口是 3306，这里为什么叫 8376？）
+
+
+### date 0622:
+今天早上起床，发现外面正在下着雨，心情莫名其妙地就好了～
+
+完成了把单体 blog 拆分成微服务的架构了。其实还没有，毕竟安全模块完全没有添加……
+OAuth2部分，SpringBoot2.4开始把认证服务器给拆出去了，搞得现在整合会发生莫名其妙的错误。
+开始慢慢往这个只有雏形的 blog 加东西了，这次一定要好好弄明白才行。
