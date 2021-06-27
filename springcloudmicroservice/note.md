@@ -61,3 +61,7 @@ No matter what, create a basic SpringCloudMicroService project, then the rest wo
 完成了把单体 blog 拆分成微服务的架构了。其实还没有，毕竟安全模块完全没有添加……
 OAuth2部分，SpringBoot2.4开始把认证服务器给拆出去了，搞得现在整合会发生莫名其妙的错误。
 开始慢慢往这个只有雏形的 blog 加东西了，这次一定要好好弄明白才行。
+
+
+### data June27
+说待图书管的效率似乎真的会高一些……
