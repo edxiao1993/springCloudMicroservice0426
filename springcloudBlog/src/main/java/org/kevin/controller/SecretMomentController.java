@@ -3,6 +3,7 @@ package org.kevin.controller;
 import org.kevin.dto.ParameterParser;
 import org.kevin.model.SecretMoment;
 import org.kevin.model.dto.PageModel;
+import org.kevin.service.RabbitMQService;
 import org.kevin.service.SecretMomentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ import java.util.Map;
 public class SecretMomentController {
     @Autowired
     private SecretMomentService secretMomentService;
+    @Autowired
+    private RabbitMQService rabbitMQService;
 
     @GetMapping("/secretMoment")
     public String secretMoment(@RequestParam(value = "pageNum", required = false) Integer pageNum,
@@ -49,6 +52,7 @@ public class SecretMomentController {
     @PostMapping("/saveSecretMoment")
     @ResponseBody
     public Integer save(@RequestParam("content") String content){
+        rabbitMQService.sendSecretMoment(content);
         return secretMomentService.saveSecretMoment(content).getData();
     }
 }

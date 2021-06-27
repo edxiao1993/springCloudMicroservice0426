@@ -5,6 +5,7 @@ import org.kevin.model.Article;
 import org.kevin.model.ArticleType;
 import org.kevin.model.dto.PageModel;
 import org.kevin.service.ArticleService;
+import org.kevin.service.RabbitMQService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,12 +19,14 @@ import java.util.List;
  */
 @Controller
 public class ArticleController {
+    @Autowired
+    private RabbitMQService rabbitMQService;
 
     @Autowired
     private ArticleService articleService;
 
     @GetMapping("/newArticle")
-    public String newArticle(ModelMap modelMap){
+    public String newArticle(ModelMap modelMap) {
         List<ArticleType> articleTypes = articleService.getArticleType();
         modelMap.addAttribute("articleTypes", articleTypes);
         return "newArticle";
@@ -33,7 +36,7 @@ public class ArticleController {
     public String articles(@RequestParam("articleType") Integer type,
                            @RequestParam(value = "pageNum", required = false) Integer pageNum,
                            @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                           ModelMap modelMap){
+                           ModelMap modelMap) {
         ParameterParser pp = new ParameterParser(pageNum, pageSize);
         pp.setArticleType(type);
 
@@ -49,7 +52,7 @@ public class ArticleController {
     }
 
     @GetMapping("/article")
-    public String article(@RequestParam("id") String id, ModelMap modelMap){
+    public String article(@RequestParam("id") String id, ModelMap modelMap) {
         List<ArticleType> articleTypes = articleService.getArticleType();
         modelMap.addAttribute("articleTypes", articleTypes);
 
@@ -60,8 +63,9 @@ public class ArticleController {
 
     @PostMapping("/saveArticle")
     @ResponseBody
-    public Integer saveArticle(Article article){
+    public Integer saveArticle(Article article) {
         article.setCreateTime(null);
+        rabbitMQService.sendArticle(article);
         return articleService.saveArticle(article);
     }
 }
